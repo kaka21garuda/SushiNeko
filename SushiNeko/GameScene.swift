@@ -15,12 +15,19 @@ enum Side {
 class GameScene: SKScene {
     var sushiBasePiece: SushiPiece!
     var character: Character!
+    //var sushi tower
+    var sushiTower: [SushiPiece] = []
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         sushiBasePiece = childNodeWithName("sushiBasePiece") as! SushiPiece!
         sushiBasePiece.connectChopSticks()
         character = childNodeWithName("character") as! Character
+        
+        //Manually stack the start of the tower
+        addTowerPiece(.None)
+        addTowerPiece(.Right)
+        addRandomPieces(10)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -30,4 +37,84 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
+    
+    func addTowerPiece(side: Side) {
+        /* Add a new sushi piece to the sushi tower */
+        
+        /* Copy original sushi piece */
+        let newPiece = sushiBasePiece.copy() as! SushiPiece
+        newPiece.connectChopSticks()
+        
+        /* Access last piece properties */
+        let lastPiece = sushiTower.last
+        
+        /* Add on top of last piece, default on first piece */
+        let lastPosition = lastPiece?.position ?? sushiBasePiece.position
+        newPiece.position = lastPosition + CGPoint(x: 0, y: 55)
+        
+        /* Increment Z to ensure it's on top of the last piece, default on first piece*/
+        let lastZPosition = lastPiece?.zPosition ?? sushiBasePiece.zPosition
+        newPiece.zPosition = lastZPosition + 1
+        
+        /* Set side */
+        newPiece.side = side
+        
+        /* Add sushi to scene */
+        addChild(newPiece)
+        
+        /* Add sushi piece to the sushi tower */
+        sushiTower.append(newPiece)
+    }
+    func addRandomPieces(total: Int) {
+        //add random pieces to sushi tower
+        for _ in 1...total {
+            //need to access last piece properties
+            let lastPiece = sushiTower.last as SushiPiece!
+            //Make sure we don't create imposible sushi structure
+            if lastPiece.side != .None {
+                addTowerPiece(.None)
+            } else {
+                //Random number genrator
+                let rand = CGFloat.random(min: 0, max: 1.0)
+                
+                if rand < 0.45 {
+                    //45 percent to get the left side
+                    addTowerPiece(.Left)
+                } else if rand < 0.9 {
+                    //90 percent to get the right side
+                    addTowerPiece(.Right)
+                } else {
+                    //only 10 percent
+                    addTowerPiece(.None)
+                }
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
