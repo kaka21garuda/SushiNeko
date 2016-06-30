@@ -14,13 +14,11 @@ enum Side {
 
 class GameScene: SKScene {
     var sushiBasePiece: SushiPiece!
-    var character: Character!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         sushiBasePiece = childNodeWithName("sushiBasePiece") as! SushiPiece!
         sushiBasePiece.connectChopSticks()
-        character = childNodeWithName("character") as! Character
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
