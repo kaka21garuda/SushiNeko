@@ -25,6 +25,21 @@ class GameScene: SKScene {
     /* Game management */
     var state: GameState = .Title
     var playButton: MSButtonNode!
+    var healthBar: SKSpriteNode!
+    var health: CGFloat = 1.0 {
+        didSet {
+            /* Cap Health */
+            if health > 1.0 { health = 1.0 }
+            /* Scale health bar between 0.0 -> 1.0 e.g 0 -> 100% */
+            healthBar.xScale = health
+        }
+    }
+    var score: Int = 0 {
+        didSet {
+            scoreLabel.text = String(score)
+        }
+    }
+    var scoreLabel: SKLabelNode!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -32,6 +47,8 @@ class GameScene: SKScene {
         sushiBasePiece.connectChopSticks()
         character = childNodeWithName("character") as! Character
         playButton = childNodeWithName("playButton") as! MSButtonNode
+        healthBar = childNodeWithName("healthBar") as! SKSpriteNode
+        scoreLabel = childNodeWithName("scoreLabel") as! SKLabelNode
         
         //Manually stack the start of the tower
         addTowerPiece(.None)
@@ -89,12 +106,23 @@ class GameScene: SKScene {
                 
                 /* Reduce zPosition to stop zPosition climbing over UI */
                 node.zPosition -= 1
+                /* Increment Health */
+                health += 0.1
+                /* Increment Score */
+                score += 1
             }
         }
     }
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        if state != .Playing { return }
+        
+        /* Decrease Health */
+        health -= 0.01
+        
+        /* Has the player run out of health? */
+        if health < 0 { gameOver() }
     }
     
     func addTowerPiece(side: Side) {
