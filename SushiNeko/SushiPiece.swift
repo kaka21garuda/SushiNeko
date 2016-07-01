@@ -49,6 +49,23 @@ class SushiPiece: SKSpriteNode {
         //set the default side of the chopstick
         side = .None
     }
+    func flip(side: Side) {
+        //flip the sushi out of the scene
+        var actionName: String = ""
+        if side == .Left {
+            actionName = "FlipRight"
+        } else if side == .Right {
+            actionName == "FlipLeft"
+        }
+        //load appropriate action
+        let flip = SKAction(named: actionName)!
+        //create node removal action
+        let remove = SKAction.removeFromParent()
+        //Build sequence, flip then remove from scene
+        let sequence = SKAction.sequence([flip, remove])
+        runAction(sequence)
+        
+    }
 }
 
 

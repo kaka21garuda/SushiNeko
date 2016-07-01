@@ -34,6 +34,8 @@
 		C669864C1D25B0010063D682 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C669863E1D25B0010063D682 /* SKTEffects.swift */; };
 		C669864D1D25B0010063D682 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C669863F1D25B0010063D682 /* SKTTimingFunctions.swift */; };
 		C669864E1D25B0010063D682 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66986401D25B0010063D682 /* Vector3.swift */; };
+		C66986501D25D2E60063D682 /* MyActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C669864F1D25D2E60063D682 /* MyActions.sks */; };
+		C66986521D25D3550063D682 /* AnimationActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C66986511D25D3550063D682 /* AnimationActions.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		C669863E1D25B0010063D682 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
 		C669863F1D25B0010063D682 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
 		C66986401D25B0010063D682 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		C669864F1D25D2E60063D682 /* MyActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyActions.sks; sourceTree = "<group>"; };
+		C66986511D25D3550063D682 /* AnimationActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AnimationActions.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 		C66985E91D2582650063D682 = {
 			isa = PBXGroup;
 			children = (
+				C66986511D25D3550063D682 /* AnimationActions.sks */,
+				C669864F1D25D2E60063D682 /* MyActions.sks */,
 				C66985F51D2582650063D682 /* AppDelegate.swift */,
 				C66985F71D2582650063D682 /* GameScene.sks */,
 				C66985F91D2582650063D682 /* GameScene.swift */,
@@ -307,7 +313,9 @@
 			files = (
 				C669862A1D2582D40063D682 /* sfx_swipe.caf in Resources */,
 				C66985F81D2582650063D682 /* GameScene.sks in Resources */,
+				C66986501D25D2E60063D682 /* MyActions.sks in Resources */,
 				C66986041D2582650063D682 /* LaunchScreen.storyboard in Resources */,
+				C66986521D25D3550063D682 /* AnimationActions.sks in Resources */,
 				C669862C1D2583280063D682 /* assets-21.atlas in Resources */,
 				C66986011D2582650063D682 /* Assets.xcassets in Resources */,
 				C66985FF1D2582650063D682 /* Main.storyboard in Resources */,

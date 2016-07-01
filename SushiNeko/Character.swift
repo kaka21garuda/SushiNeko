@@ -14,12 +14,15 @@ class Character: SKSpriteNode {
         didSet {
             if side == .Left {
                 xScale = 1
-                position.x = 1
+                position.x = 68
             } else {
                 //to flip an asset horizontally is to invert the x axis
                 xScale = -1
                 position.x = 252
             }
+            //load the run action
+            let punch = SKAction(named: "Punch")!
+            runAction(punch)
         }
     }
     
