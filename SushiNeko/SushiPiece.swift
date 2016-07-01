@@ -55,7 +55,7 @@ class SushiPiece: SKSpriteNode {
         if side == .Left {
             actionName = "FlipRight"
         } else if side == .Right {
-            actionName == "FlipLeft"
+            actionName = "FlipLeft"
         }
         //load appropriate action
         let flip = SKAction(named: actionName)!
